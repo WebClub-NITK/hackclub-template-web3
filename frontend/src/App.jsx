@@ -10,7 +10,7 @@ import {
 } from 'wagmi';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import './App.css';
 // Project ID from https://cloud.walletconnect.com/
 const projectId = import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID;
 
@@ -55,53 +55,53 @@ function WalletConnection() {
   };
 
   return (
-    <div className="p-4 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Web3 Sample dApp</h1>
-      
-      {!isConnected ? (
+    <div className="wallet-container">
+    {!isConnected ? (
+      <div className="wallet-header">
+        <h1>Web3 Sample dApp</h1>
         <w3m-button />
-      ) : (
-        <div>
-          <div className="bg-gray-100 p-4 rounded-lg mb-4">
-            <p className="font-semibold">Connected Address:</p>
-            <p className="break-words">{address}</p>
-            <p className="mt-2">Network: {getCurrentChainName()}</p>
-          </div>
-
-          <div className="network-selector mb-4">
-            <h2 className="font-bold mb-2">Available Networks</h2>
-            <div className="grid grid-cols-2 gap-2">
-              {chains.map((chain) => (
-                <button
-                  key={chain.id}
-                  onClick={() => switchChain({ chainId: chain.id })}
-                  className={`p-2 rounded text-sm ${
-                    chainId === chain.id
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-200 hover:bg-gray-300'
-                  }`}
-                >
-                  {chain.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {balance && (
-            <div className="bg-gray-100 p-4 rounded-lg mb-4">
-              <p>Balance: {balance.formatted} {balance.symbol}</p>
-            </div>
-          )}
-
-          <button 
-            onClick={() => disconnect()}
-            className="bg-red-500 text-white px-4 py-2 rounded"
-          >
-            Disconnect
-          </button>
+      </div>
+    ) : (
+      <div>
+        <div className="wallet-header">
+          <h1>Web3 Sample dApp</h1>
         </div>
-      )}
-    </div>
+  
+        <div className="wallet-info">
+          <p className="font-semibold">Connected Address:</p>
+          <p className="break-words">{address}</p>
+          <p className="mt-2">Network: {getCurrentChainName()}</p>
+        </div>
+  
+        <div className="network-selector">
+          <h2>Available Networks</h2>
+          <div className="network-grid">
+            {chains.map((chain) => (
+              <button
+                key={chain.id}
+                onClick={() => switchChain({ chainId: chain.id })}
+                className={chainId === chain.id ? "active" : ""}
+              >
+                {chain.name}
+              </button>
+            ))}
+          </div>
+        </div>
+  
+        {balance && (
+          <div className="balance-box">
+            <p>Balance: {balance.formatted} {balance.symbol}</p>
+          </div>
+        )}
+  
+        <button onClick={() => disconnect()} className="disconnect-btn">
+          Disconnect
+        </button>
+      </div>
+    )}
+  </div>
+  
+  
   );
 }
 
