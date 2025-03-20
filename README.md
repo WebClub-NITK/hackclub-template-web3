@@ -17,10 +17,14 @@
 
 All contract-related tasks, including creation, deployment, and testing, are handled in the `Contracts` folder.
 
-## Priview
+## Preview
 
+ ![image](https://github.com/user-attachments/assets/0ffbc4b7-2337-4a08-a5f6-89147821a48d)
+ <br>
 ![image](https://github.com/user-attachments/assets/ab54bb1b-7688-46e5-9d7d-1d29d1283eea)
 <br>
+ ![image](https://github.com/user-attachments/assets/3d6b817d-75ba-4dc3-baf1-fb121c7a8706)
+ <br>
 
 ## Contributing
 
